@@ -59,7 +59,7 @@ app.get('/fetchReviews/dealer/:id', async (req, res) => {
 // Express route to fetch all dealerships
 app.get('/fetchDealers', async (req, res) => {
     try {
-        const allDealers = await Dealerships.find();
+        const allDealers = await Dealerships.find({dealership: req.params.id});
         res.json(allDealers);
     } catch (error) {
         res.status(404).json({error: 'Unable to locate dealers'});
